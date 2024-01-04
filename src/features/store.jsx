@@ -2,6 +2,6 @@ const { configureStore } = require("@reduxjs/toolkit");
 
 const store = configureStore({
     reducer: {
-        users: userReducer;
+        product: productReducer,
     }
 })

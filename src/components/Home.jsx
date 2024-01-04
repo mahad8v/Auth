@@ -23,9 +23,6 @@ export const Home = () => {
                                 Category
                             </th>
                             <th className="px-6 py-3">
-                                Price
-                            </th>
-                            <th className="px-6 py-3">
                                 <span className="sr-only">Edit</span>
                             </th>
                             <th className="px-6 py-3">
@@ -50,9 +47,7 @@ export const Home = () => {
                                 <td className="px-6 py-4">
                                     Laptop
                                 </td>
-                                <td className="px-6 py-4">
-                                    $2999
-                                </td>
+                                
                                 <td className="px-6 py-4 text-right cursor-pointer">
                                     <div className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</div>
                                 </td>
@@ -77,7 +72,7 @@ export const Home = () => {
             </div>
 
         </div>
-        <Login/>
+        {/* <Login/> */}
     </>
 
   )
