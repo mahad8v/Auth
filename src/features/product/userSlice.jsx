@@ -8,9 +8,9 @@ const intialState = {
         "id": 1,
         "name": "Product A",
         "category": "Electronics",
+        "color": "Black",
+        "price": 499.99,
         "details": {
-            "color": "Black",
-            "price": 499.99,
             "manufacturer": "ABC Electronics",
             "ratings": 4.5
         }
