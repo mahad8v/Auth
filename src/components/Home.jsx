@@ -1,9 +1,25 @@
 import { NavBar } from "./NavBar"
 import { Adduser } from "./Form"
 import { Login } from "./LogIn"
-import { UpdateProduct } from "./UpdateProduct"
+import { UpdateProduct } from "./Users"
+import { useEffect, useState } from "react"
+import { getAllPost } from "../Service/postApi"
 
 export const Home = () => {
+  const [post, setPost] = useState()
+
+  useEffect(()=> {
+    const fetchuser = async () => {
+        try {
+            const response = await getAllPost()
+            console.log(response)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    fetchuser()
+  },[])
+  
   return (
     <>
         <div className="mb-2">
