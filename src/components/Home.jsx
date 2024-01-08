@@ -12,7 +12,8 @@ export const Home = () => {
     const fetchuser = async () => {
         try {
             const response = await getAllPost()
-            console.log(response)
+            await setPost(response)
+            console.log("POST:", post)
         } catch (error) {
             console.log(error)
         }
@@ -34,13 +35,13 @@ export const Home = () => {
                                 <span className="">#</span>
                             </th>
                             <th className="px-6 py-3">
-                                Product name
+                                User ID
                             </th>
                             <th className="px-6 py-3">
-                                Color
+                                Title
                             </th>
                             <th className="px-6 py-3">
-                                Category
+                                Description
                             </th>
                             <th className="px-6 py-3">
                                 <span className="sr-only">delete</span>
