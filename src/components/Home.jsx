@@ -1,7 +1,7 @@
 import { NavBar } from "./NavBar"
-import { Adduser } from "./Form"
+import { AddPost } from "./AddPost"
 import { Login } from "./LogIn"
-import { UpdateProduct } from "./Users"
+import { UpdatePost } from "./Update"
 import { useEffect, useState } from "react"
 import { getAllPost } from "../Service/postApi"
 
@@ -35,7 +35,7 @@ export const Home = () => {
                                 <span className="">#</span>
                             </th>
                             <th className="px-6 py-3">
-                                User ID
+                                Author
                             </th>
                             <th className="px-6 py-3">
                                 Title
@@ -49,7 +49,7 @@ export const Home = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {[0.1,2,3,4,5,7,8,9].map((item, index) => {
+                        {[0.1,2,3,4,5,7,8,9,10,11].map((item, index) => {
                             return(
                             // eslint-disable-next-line react/jsx-key
                             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -81,10 +81,10 @@ export const Home = () => {
             <div>
 
                 <div className="bg-[#111827] p-4  rounded-sm">
-                    <Adduser/>
+                    <AddPost/>
                 </div>
                 <div className="bg-[#111827] p-4  rounded-sm">
-                    <UpdateProduct/>
+                    <UpdatePost/>
                 </div>
             </div>
 

@@ -6,9 +6,9 @@ const initialState = {
     error: null,
 }
 
-export const getPosts = createAsyncThunk(
+// export const getPosts = createAsyncThunk(
 
-)
+// )
 
 export const postSlice = createSlice({   
     reducers: {
@@ -20,10 +20,8 @@ export const postSlice = createSlice({
         },
         updatePost: (state, action) => {
             console.log("UPDATE POST")
-        }
-        
+        }   
     }
-
 })
 
 export const  posts = {

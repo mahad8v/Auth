@@ -1,9 +1,10 @@
-const { configureStore } = require("@reduxjs/toolkit");
-import posts from "../features/post/postSlice";
+
+// import posts from "../features/post/postSlice";
+import { configureStore } from '@reduxjs/toolkit';
 
 export const store = configureStore({
     reducer: {
-        product: productReducer,
-        posts: postsReducer
+        // product: productReducer,
+        // posts: postsReducer
     }
 })

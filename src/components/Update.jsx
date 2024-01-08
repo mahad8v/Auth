@@ -1,6 +1,6 @@
 import { Field, Form, Formik } from "formik"
 
-export const Adduser = () => {
+export const UpdatePost = () => {
     
     const initialValues = {
         name: "",
@@ -10,7 +10,7 @@ export const Adduser = () => {
 
     return(
         <div className="" style={{width: "300px"}}>
-            <h4 className="text-white">Add</h4>
+            <h4 className="text-white">UPDATE</h4>
         <Formik 
             initialValues = {initialValues}
             onSubmit={async(values)=> {
@@ -21,6 +21,9 @@ export const Adduser = () => {
         >
             <Form>
                 <div className="grid gap-2 mb-2 md:grid-cols-1">
+                <div>
+                        <Field type="text" id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="id" name="id" />
+                    </div>
                     <div>
                         <Field type="text" id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="product name" name="name" />
                     </div>
