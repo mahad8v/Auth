@@ -5,7 +5,7 @@ const intialState = {
    
 }
     
-export const users = createSlice({
+const users = createSlice({
     name: "user",
     initialState,
     
