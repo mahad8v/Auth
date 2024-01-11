@@ -1,25 +1,28 @@
 import { NavBar } from "./NavBar"
 import { AddPost } from "./AddPost"
-import { Login } from "./LogIn"
+import { useDispatch, useSelector } from "react-redux"
 import { UpdatePost } from "./Update"
 import { useEffect, useState } from "react"
 import { getAllPost } from "../Service/postApi"
 
 export const Home = () => {
-  const [post, setPost] = useState()
+//   const [post, setPost] = useState()
+  const dispatch = useDispatch()
+  const posts = useSelector(state => state.posts)
+  console.log(posts)
 
-  useEffect(()=> {
-    const fetchuser = async () => {
-        try {
-            const response = await getAllPost()
-            await setPost(response)
-            console.log("POST:", post)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    fetchuser()
-  },[])
+//   useEffect(()=> {
+//     const fetchuser = async () => {
+//         try {
+//             const response = await getAllPost()
+//             await setPost(response)
+//             console.log("POST:", post)
+//         } catch (error) {
+//             console.log(error)
+//         }
+//     }
+//     fetchuser()
+//   },[])
   
   return (
     <>
@@ -49,7 +52,7 @@ export const Home = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {[0.1,2,3,4,5,7,8,9,10,11].map((item, index) => {
+                        {posts.map((item, index) => {
                             return(
                             // eslint-disable-next-line react/jsx-key
                             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -57,13 +60,13 @@ export const Home = () => {
                                     {index+1}
                                 </th>
                                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Apple MacBook Pro 17
+                                    {item.author}
                                 </th>
                                 <td className="px-6 py-4">
-                                    Silver
+                                    {item.title}
                                 </td>
-                                <td className="px-6 py-4">
-                                    Laptop
+                                <td className="px-6 py-4 text-ellipsis overflow-hidden ">
+                                    {item.content}
                                 </td>
                                 
                                 <td className="px-6 py-4 text-right cursor-pointer">
