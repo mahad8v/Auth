@@ -21,12 +21,15 @@ const initialSatate =[
   ]
   
 
-const postSlice = createSlice({   
+const postsSlice = createSlice({   
   name: "posts",
   initialState: initialSatate,
     reducers: {
         getPosts: (state, action) => {
             console.log("GET ALL POSTS")
+        },
+        addPost: (state, action) => {
+          state = [...state, action.payload]
         },
         deletePost: (state, action) => {
             console.log("DELELT POST")
@@ -37,4 +40,6 @@ const postSlice = createSlice({
     }
 })
 
-export default  postSlice.reducer
+export const selectAllPost = (state) => state.posts
+export const {addPost} = postsSlice.actions
+export default  postsSlice.reducer
