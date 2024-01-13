@@ -38,10 +38,10 @@ const postsSlice = createSlice({
           return [ action.payload, ...state]
         },
         deletePost: (state, action) => {
-            console.log("DELELT POST")
+            // console.log("DELELT POST")
         },
         updatePost: (state, action) => {
-            console.log("UPDATE POST")
+            // console.log("UPDATE POST")
         }   
     }
 })
