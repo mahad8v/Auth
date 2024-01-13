@@ -28,8 +28,8 @@ const postsSlice = createSlice({
         getPosts: (state, action) => {
             console.log("GET ALL POSTS")
         },
-        addPost: (state, action) => {
-          state = [...state, action.payload]
+        addedPost: (state, action) => {
+          state.push(action.payload)
         },
         deletePost: (state, action) => {
             console.log("DELELT POST")
@@ -41,5 +41,5 @@ const postsSlice = createSlice({
 })
 
 export const selectAllPost = (state) => state.posts
-export const {addPost} = postsSlice.actions
+export const {addedPost} = postsSlice.actions
 export default  postsSlice.reducer
