@@ -18,7 +18,6 @@ export const AddPost = () => {
         <Formik 
             initialValues = {initialValues}
             onSubmit={async(values)=> {
-                dispatch(addedPost(values))
               
                 
             }}
