@@ -52,7 +52,7 @@ export const Home = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {posts.map((item, index) => {
+                        {/* {posts.map((item, index) => {
                             return(
                             // eslint-disable-next-line react/jsx-key
                             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -77,7 +77,7 @@ export const Home = () => {
                             )
                         })
 
-                        }
+                        } */}
                     </tbody>
                 </table>
             </div>
