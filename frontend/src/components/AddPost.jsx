@@ -1,16 +1,20 @@
 import { Field, Form, Formik } from "formik"
 import { useDispatch } from "react-redux"
 import { nanoid } from "@reduxjs/toolkit"
-import { addedPost } from "../features/post/postSlice"
+import { addedPost, createPost } from "../features/post/postSlice"
+import { useState } from "react"
 
 export const AddPost = () => {
+    const [loading, setLoading] = useState(false)
     const dispatch = useDispatch()
     const initialValues = {
         author: "",
         title: "",
-        content: ""
+        description: ""
     }
-
+    if(loading) {
+        <h1>loading...</h1>
+    }
 
     return( 
         <div className="" style={{width: "300px"}}>
@@ -18,7 +22,14 @@ export const AddPost = () => {
         <Formik 
             initialValues = {initialValues}
             onSubmit={async(values)=> {
-              
+                console.log(values)
+                try {
+                    setLoading(true)
+                    dispatch(createPost(values))
+                    setLoading(false)                    
+                } catch (error) {
+                    setLoading(false)
+                }
                 
             }}
         >
@@ -31,7 +42,7 @@ export const AddPost = () => {
                         <Field type="text" id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Title" name="title" />
                     </div>
                     <div>
-                        <Field as = "textarea" type="text" id="company" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Content" name="content" />
+                        <Field as = "textarea" type="text" id="company" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Content" name="description" />
                     </div>
                 </div>
               

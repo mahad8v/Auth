@@ -2,27 +2,22 @@ import { NavBar } from "./NavBar"
 import { AddPost } from "./AddPost"
 import { useDispatch, useSelector } from "react-redux"
 import { UpdatePost } from "./Update"
-import { useEffect, useState } from "react"
-import { getAllPost } from "../Service/postApi"
+import { useCallback, useEffect, useState } from "react"
+import { retrievePosts } from "../features/post/postSlice"
+
 
 export const Home = () => {
-//   const [post, setPost] = useState()
-  const dispatch = useDispatch()
-  const posts = useSelector(state => state.posts)
-  console.log(posts)
-
-//   useEffect(()=> {
-//     const fetchuser = async () => {
-//         try {
-//             const response = await getAllPost()
-//             await setPost(response)
-//             console.log("POST:", post)
-//         } catch (error) {
-//             console.log(error)
-//         }
-//     }
-//     fetchuser()
-//   },[])
+    const dispatch = useDispatch();
+    const posts = useSelector(state => state.posts);
+    console.log(posts)
+  
+    const initFetch = useCallback(() => {
+      dispatch(retrievePosts());
+    }, [dispatch]);
+  
+    useEffect(() => {
+      initFetch();
+    }, [initFetch]);
   
   return (
     <>
@@ -52,7 +47,7 @@ export const Home = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {posts.map((item, index) => {
+                        {posts.map((item, index) => {
                             return(
                             // eslint-disable-next-line react/jsx-key
                             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -66,7 +61,7 @@ export const Home = () => {
                                     {item.title}
                                 </td>
                                 <td className="px-6 py-4 text-ellipsis overflow-hidden ">
-                                    {item.content}
+                                    {item.description}
                                 </td>
                                 
                                 <td className="px-6 py-4 text-right cursor-pointer">
@@ -77,7 +72,7 @@ export const Home = () => {
                             )
                         })
 
-                        } */}
+                        }
                     </tbody>
                 </table>
             </div>
