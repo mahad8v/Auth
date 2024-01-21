@@ -9,18 +9,18 @@ const postsSlice = createSlice({
   name: "posts",
   initialState: initialSatate,
     extraReducers(builder) {
-      builder
-        .addCase(getAllPost.pending, (state, action) => {
-          state.status = 'loading'
-        })
-        .addCase(getAllPost.fulfulled, (state, action) => {
-          state.status = 'succeeded'
+      // builder
+      //   .addCase(getAllPost.pending, (state, action) => {
+      //     state.status = 'loading'
+      //   })
+      //   .addCase(getAllPost.fulfulled, (state, action) => {
+      //     state.status = 'succeeded'
 
-        })
-        .addCase(getAllPost.rejected, (state, action) => {
-        state.status = 'failed',
-        state.error = action.error.message
-        })
+      //   })
+      //   .addCase(getAllPost.rejected, (state, action) => {
+      //   state.status = 'failed',
+      //   state.error = action.error.message
+      //   })
     }
     
 })
