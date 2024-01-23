@@ -1,15 +1,13 @@
-// postSlice.js
-
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { createPostService, getAllPostsService } from '../../Service/postApi'; // Fix the path to the service file
+import { createPostService, getAllPostsService } from '../../Service/postApi'; 
 
 const initialState = [];
 
 export const createPost = createAsyncThunk(
   "post/create",
   async (postData) => {
+    console.log("post datas",postData)
     const res = await createPostService(postData);
-    console.log(postData)
     return res.data;
   }
 );
