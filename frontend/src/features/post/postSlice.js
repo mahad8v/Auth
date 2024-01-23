@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { createPostService, getAllPostsService } from '../../Service/postApi'; 
+import { createPostService, deletePostService, getAllPostsService } from '../../Service/postApi'; 
 
 const initialState = [];
 
@@ -20,6 +20,15 @@ export const retrievePosts = createAsyncThunk(
   }
 );
 
+export const deletePost = createAsyncThunk(
+  "post/delete", 
+  async(id) => {
+    console.log("id from slice",id)
+    const res = await deletePostService(id)
+    console.log(res)
+  }
+)
+
 const postsSlice = createSlice({
   name: "posts",
   initialState,
@@ -30,8 +39,16 @@ const postsSlice = createSlice({
         state.push(action.payload);
       })
       .addCase(retrievePosts.fulfilled, (state, action) => {
+        console.log(action.payload)
         return action.payload;
-      });
+      })
+      .addCase(deletePost.fulfilled, (state, action) => {
+        // state.posts = state.posts.filter(post => post.id !== action.payload)
+        // return state.filter(post => post.id !== action.payload);      
+        return state.filter(post => post.id !== action.meta.arg);  
+        // console.log(action)
+    
+      })
   },
 });
 

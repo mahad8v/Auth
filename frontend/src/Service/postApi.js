@@ -8,3 +8,8 @@ export const createPostService = (postData) => {
     console.log(postData)
   return http.post("posts/", postData); 
 }
+
+export const deletePostService = (id) => {
+  console.log("api from api",id)
+  return http.delete(`posts/${id}`)
+}

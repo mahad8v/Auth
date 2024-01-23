@@ -7,11 +7,11 @@ const app = express();
 app.use(cors())
 const PORT = 5000;
 
-app.use((req, res, next) => {
-  setTimeout(() => {
-    next()
-  }, 1500);
-})
+// app.use((req, res, next) => {
+//   setTimeout(() => {
+//     next()
+//   }, 1500);
+// })
 
 db.sequelize.sync().then(() => {
     app.listen(PORT, () => {

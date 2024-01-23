@@ -3,7 +3,7 @@ import { AddPost } from "./AddPost"
 import { useDispatch, useSelector } from "react-redux"
 import { UpdatePost } from "./Update"
 import { useCallback, useEffect, useState } from "react"
-import { retrievePosts } from "../features/post/postSlice"
+import { deletePost, retrievePosts } from "../features/post/postSlice"
 
 
 export const Home = () => {
@@ -17,9 +17,14 @@ export const Home = () => {
     useEffect(() => {
       initFetch();
     }, [initFetch]);
+
+    const handleDeletePost = (id) => {
+        console.log("id from home",id)
+        dispatch(deletePost(id))
+    }
   
   return (
-    <>
+    <div>
         <div className="mb-2">
             <NavBar/>
         </div>
@@ -48,35 +53,31 @@ export const Home = () => {
                     <tbody>
                         {posts.map((item, index) => {
                             return(
-                            // eslint-disable-next-line react/jsx-key
-                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {index+1}
-                                </th>
-                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {item.author}
-                                </th>
-                                <td className="px-6 py-4">
-                                    {item.title}
-                                </td>
-                                <td className="px-6 py-4 text-ellipsis overflow-hidden ">
-                                    {item.description}
-                                </td>
-                                
-                                <td className="px-6 py-4 text-right cursor-pointer">
-                                    <div className="font-medium text-blue-600 dark:text-blue-500 hover:underline">delete</div>
-                                </td>
-                            </tr>
-
+                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {index+1}
+                                    </th>
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {item.author}
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        {item.title}
+                                    </td>
+                                    <td className="px-6 py-4 text-ellipsis overflow-hidden ">
+                                        {item.description}
+                                    </td>
+                                    
+                                    <td className="px-6 py-4 text-right cursor-pointer" onClick={() => handleDeletePost(item.id)}>
+                                        <div className="font-medium text-blue-600 dark:text-blue-500 hover:underline">delete</div>
+                                    </td>
+                                </tr>
                             )
                         })
-
                         }
                     </tbody>
                 </table>
             </div>
             <div>
-
                 <div className="bg-[#111827] p-4  rounded-sm">
                     <AddPost/>
                 </div>
@@ -87,7 +88,7 @@ export const Home = () => {
 
         </div>
         {/* <Login/> */}
-    </>
+    </div>
 
   )
 }
