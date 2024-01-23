@@ -9,14 +9,16 @@ import { deletePost, retrievePosts } from "../features/post/postSlice"
 export const Home = () => {
     const dispatch = useDispatch();
     const posts = useSelector(state => state.posts);
+    console.log(posts)
   
     const initFetch = useCallback(() => {
-      dispatch(retrievePosts());
     }, [dispatch]);
-  
+    
     useEffect(() => {
+    dispatch(retrievePosts());
       initFetch();
     }, [initFetch]);
+
 
     const handleDeletePost = (id) => {
         console.log("id from home",id)

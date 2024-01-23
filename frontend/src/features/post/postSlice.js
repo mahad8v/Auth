@@ -16,6 +16,7 @@ export const retrievePosts = createAsyncThunk(
   "post/retrieve",
   async () => {
     const res = await getAllPostsService();
+    console.log(" res from slice",res.data)
     return res.data;
   }
 );
@@ -36,18 +37,21 @@ const postsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(createPost.fulfilled, (state, action) => {
-        state.push(action.payload);
+        // state: [...state, action.payload]
+        // console.log(action)
+        state.unshift(action.payload);
       })
       .addCase(retrievePosts.fulfilled, (state, action) => {
-        console.log(action.payload)
+        console.log("action payload data",action.payload)
         return action.payload;
+
       })
       .addCase(deletePost.fulfilled, (state, action) => {
         // state.posts = state.posts.filter(post => post.id !== action.payload)
         // return state.filter(post => post.id !== action.payload);      
+        console.log(action.meta.arg)
         return state.filter(post => post.id !== action.meta.arg);  
-        // console.log(action)
-    
+        
       })
   },
 });
