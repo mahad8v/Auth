@@ -41,15 +41,14 @@ const postsSlice = createSlice({
         // console.log(action)
         state.unshift(action.payload);
       })
-      .addCase(retrievePosts.fulfilled, (state, action) => {
+      .addCase(retrievePosts.fulfilled, (_, action) => {
         console.log("action payload data",action.payload)
         return action.payload;
 
       })
       .addCase(deletePost.fulfilled, (state, action) => {
         // state.posts = state.posts.filter(post => post.id !== action.payload)
-        // return state.filter(post => post.id !== action.payload);      
-        console.log(action.meta.arg)
+        // return state.filter(post => post.id !== action.payload);
         return state.filter(post => post.id !== action.meta.arg);  
         
       })
