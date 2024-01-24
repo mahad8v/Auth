@@ -37,9 +37,7 @@ const postsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(createPost.fulfilled, (state, action) => {
-        // state: [...state, action.payload]
-        // console.log(action)
-        state.unshift(action.payload);
+        return [action.payload, ...state];
       })
       .addCase(retrievePosts.fulfilled, (_, action) => {
         console.log("action payload data",action.payload)
@@ -47,8 +45,6 @@ const postsSlice = createSlice({
 
       })
       .addCase(deletePost.fulfilled, (state, action) => {
-        // state.posts = state.posts.filter(post => post.id !== action.payload)
-        // return state.filter(post => post.id !== action.payload);
         return state.filter(post => post.id !== action.meta.arg);  
         
       })
