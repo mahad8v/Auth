@@ -1,20 +1,20 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "blog web application",
+  "description": "crud project with auth",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "server": "nodemone server.js"
   },
-  "author": "Zerobug110",
+  "author": "muhammed bojang",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.4.1",
     "express": "^4.18.2",
-    "mysql2": "^3.7.1",
-    "nodemon": "^3.0.3",
-    "sequelize": "^6.35.2",
-    "sequelize-cli": "^6.6.2"
+    "mongoose": "^8.1.1",
+    "nodemon": "^3.0.3"
   }
 }

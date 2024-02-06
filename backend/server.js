@@ -1,27 +1,17 @@
-const express = require('express');
-const cors = require("cors")
-// const sequelize = require('./config/config');
-const postRoutes = require('./routes/router');
-const db = require("./models")
-const app = express();
-app.use(cors())
-const PORT = 5000;
-
-// app.use((req, res, next) => {
-//   setTimeout(() => {
-//     next()
-//   }, 1500);
-// })
-
-db.sequelize.sync().then(() => {
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
-      });
-      
-});
+const express = require("express")
+const app = express()
 
 
+const PORT = 8800;
 
-// Routes
-app.use('/api/v1/', postRoutes);
+app.listen(PORT, console.log("********* servier start **********"))
+app.get('/', async(req, res)=> {
 
+  try {
+    res.status(200).json({
+      status: "success",
+      data: "api for getting all the  list"
+    })
+  } catch (error) {
+  }
+})
